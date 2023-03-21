@@ -1,0 +1,143 @@
+body {
+  font-family: Poppins;
+  font-weight: bold;
+}
+
+  .profile-picture {
+    display: inline-block;
+    padding: 4px;
+    border-radius: 30px;
+    border: 2px solid #ccced2;
+
+  }
+
+  .profile-picture img {
+    width: 36px;
+    height: 36px;
+ 
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  .logo>.right {
+    color: #FF5F26;
+  }
+
+  .content {
+    background-color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0px 16px 90px rgba(19, 7, 52, 0.08);
+    border-radius: 12px;
+
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .heading .title {
+    color: #FF5F26;
+  }
+
+  .heading .subtitle {
+    font-size: 24px;
+  }
+
+  .heading .desc {
+    color: #7A7F83;
+  }
+
+  .button-orange {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FF5F26;
+    color: white;
+    border: 0;
+    height: 48px;
+    border-radius: 24px;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+
+  .option {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .button-outline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid #FF5F26;
+    color: #FF5F26;
+    height: 48px;
+    border-radius: 24px;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+
+  .task {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .task .main {
+    flex: 1;
+  }
+
+  .done {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    border: 0;
+    border-top-width: 2px;
+    border-color: black;
+    border-style: solid;
+    margin: 20px;
+    margin-top: 50px;
+  }
+
+  .task .main .badge {
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: #FFEBD3;
+    color: #FF5F26;
+  }
+
+  .check>input {
+    width: 25px;
+    height: 25px;
+  }
+
+  .task-desc {
+    font-size: 13px;
+    color: #7A7F83;
+    margin-top: 10px;
+  }
+
+  .input {
+    padding: 8px;
+    color: #FF5F26;
+    border-radius: 60px;
+    color: #FF5F26;
+    font-size: 16px;
+    border: 2px solid #FF5F26;
+    font-family: 'Poppins';
+    font-style: bold;
+    width: 136px;
+    height: 44px;
+    cursor: pointer;
+  }
