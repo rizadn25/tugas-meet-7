@@ -98,15 +98,14 @@ body {
   }
 
   .done {
-    display: flex;
     padding: 10px;
-    gap: 10px;
+    margin-top: 10px;
+    gap: 20px;
     border: 0;
     border-top-width: 2px;
     border-color: black;
     border-style: solid;
-    margin: 20px;
-    margin-top: 50px;
+    
   }
 
   .task .main .badge {
@@ -126,6 +125,13 @@ body {
     font-size: 13px;
     color: #7A7F83;
     margin-top: 10px;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: unset;
+    border: unset;
+    padding: 5px;
   }
 
   .input {
@@ -140,4 +146,78 @@ body {
     width: 136px;
     height: 44px;
     cursor: pointer;
+  }
+
+  .sub-button {
+    position: absolute;
+    margin-left: 80vh;
+  }
+
+  .task-sub {
+    font-size: 16px;
+    color: #293038;
+    font-weight: bold;
+    margin-left: 25px;
+  }
+
+  .checkbox-btn1>input {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    gap: 50px;
+    margin-top: 10px;
+    margin-left: 45px;
+  }
+
+  .task-sub1 {
+    font-size: 16px;
+    color: #293038;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-left: 80px;
+  }
+
+  .list-item {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-done {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: unset;
+    border: unset;
+    padding: 5px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .form-list {
+    display: block;
+    padding: 16px;
+    background-color: white;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #F5F5F5;
+  }
+
+   input[type=date] {
+    width: 100%;
+    font-size: 14px;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #F5F5F5;
   }
