@@ -66,7 +66,7 @@
           <div class="desc">Buat list tugas harian saya</div>
         </div>
         <div>
-          <button class="button-orange">
+          <button id="add-task" class="button-orange">
             <img src="/assets/plus.png" alt="plus" />
             Tambah tugas
           </button>
@@ -83,6 +83,13 @@
             </select>
           </div>
         </div>
+        <form>
+            <label id="add" class="form-list" style="display: none;">
+              <input type="text" placeholder="Masukan nama tugas" name="Masukan nama tugas">
+              <input type="text" placeholder="Deskripsi Tugas (Optional)" name="Deskripsi Tugas (Optional)">              
+              <input type="date" placeholder="Tanggal & Waktu" name="Tanggal & Waktu">
+            </label>  
+          </form>
         <div class="task">
           <div class="check">
             <input type="checkbox" />
@@ -91,8 +98,25 @@
             <div>
               <span>Product Design</span>
               <span class="badge">Hari Ini</span>
+              <img src="/assets/more-vertical.png" alt="more-vertical" />
+            <div>
+          </div>
+          <button id="daily-task" class="task-desc">
+            <div>Tugas untuk design team</div> 
+          </button>
+          <div id="todo" style="display: none;">
+            <div class="sub-button"> <img src="assets/button-plus2.png" alt="button-plus2" /></div>
+            <div class="task-sub">Subtask</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box1" id="box1"></div>
+            <div id="box-text2" class="task-sub1">Design Review</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box2" id="box2"></div>
+            <div id="box-text2" class="task-sub1">Low-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box3" id="box3"></div>
+            <div id="box-text3" class="task-sub1">High-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box4" id="box4"></div>
+            <div id="box-text4" class="task-sub1">Design Guidelines</div>
+          </div>
             </div>
-            <div class="task-desc">Tugas untuk design team</div>
           </div>
           <div>
             <div>
@@ -133,18 +157,1181 @@
           </div>
         </div>
       </div>
-      <div class="done">
-        <div class="tab">
-          <input id="tab-2" type="checkbox">
-          <label for="tab-2">Terselesaikan (3 tugas)</label>
-          <div class="content">
-            <p>Requirements Detail</p>
-            <p>Backlog Teams</p>
-            <p>Meeting With Teams</p>
+    <div class="done">
+        <button id="done-task" class="btn-done">
+          <span><img src="/assets/arrd.png" alt="arrow-down" />
+          <span>Terselesaikan 3 (tugas)</span>
+        </button>  
+       <div id="list" style="display: none;">
+        <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb1" id="cb1">
           </div>
+          <div id="cb1-text">Requirements Detail</div>
+      </label>
+      <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb2" id="cb2">
+          </div>
+          <div id="cb2-text">Backlog Teams</div>
+      </label>
+      <label class="list-item">
+        <div class="check">
+            <input type="checkbox" name="cb3" id="cb3">
         </div>
+        <div id="cb3-text">Meeting With Teams</div>
+      </label>
+       </div>
+    </div>
+      </div>
     </main>
   </div>
+        <script>
+          // List tugas terselesaikan
+              const cb1 = document.getElementById('cb1')
+              const cb2 = document.getElementById('cb2')
+              const cb3 = document.getElementById('cb3')
+              const cb1Text = document.getElementById('cb1-text')
+              const cb2Text = document.getElementById('cb2-text')
+              const cb3Text = document.getElementById('cb3-text')
+              cb1.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb1Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb1Text.style.textDecorationLine = null
+                  )
+              })
+              cb2.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb2Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb2Text.style.textDecorationLine = null
+                  )
+              })
+              cb3.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb3Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb3Text.style.textDecorationLine = null
+                  )
+              })
+
+              // button tugas terselesaikan
+              const doneTaskButton = document.getElementById('done-task')
+              const list = document.getElementById('list')
+              let isListShow = false
+              doneTaskButton.addEventListener('click', ()=>{
+                  if(isListShow){
+                      isListShow = false
+                      doneTaskButton.style.color = 'black'
+                      list.style.display = 'none'
+                  }else{
+                      isListShow = true
+                      doneTaskButton.style.color = '#7A7F83'
+                      list.style.display = 'block'
+                  }
+              })
+
+              // button tambah tugas
+              const addTaskButton = document.getElementById('add-task')
+              const add = document.getElementById('add')
+              let isAddShow = false
+              addTaskButton.addEventListener('click', ()=>{
+                  if(isAddShow){
+                      isAddShow = false
+                      add.style.display = 'none'
+                  }else{
+                      isAddShow = true
+                      add.style.display = 'block'
+                  }
+              })
+              
+              // button tugas harian
+              const dailyTaskButton = document.getElementById('daily-task')
+              const todo = document.getElementById('todo')
+              let isTodoShow = false
+              dailyTaskButton.addEventListener('click', ()=>{
+                  if(isTodoShow){
+                      isTodoShow = false
+                      todo.style.display = 'none'
+                  }else{
+                      isTodoShow = true
+                      todo.style.display = 'block'
+                  }
+              })
+        </script>
+<!-- Javascript untuk Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+crossorigin="anonymous"></script>
+</body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup Website Javascript DOM</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- CSS External -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="logo">
+          <span class="left">waz</span><span class="right">wez</span><span>.</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="/assets/notification.png" alt="notification" />
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <div class="profile-picture d-inline-block">
+                <img class="rounded-circle object-fit-cover" src="/assets/profile.jpg" alt="profile" />
+              </div>
+              Krozeo Jupiter
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Home</a></li>
+              <li><a class="dropdown-item" href="#">My Task</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sort By</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="conten-wrapper">
+    <main class="content">
+      <div class="heading">
+        <div>
+          <div class="title">MY TASK</div>
+          <div class="subtitle">To Do List</div>
+          <div class="desc">Buat list tugas harian saya</div>
+        </div>
+        <div>
+          <button id="add-task" class="button-orange">
+            <img src="/assets/plus.png" alt="plus" />
+            Tambah tugas
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="option">
+          <div>Sort by</div>
+          <div>
+            <select class="input" name="By Tanggal" id="by-tanggal">
+              <option value="0" selected class="option">By Tanggal</option>
+              <option value="1" class="option">By Time</option>
+              <option value="2" class="option">Terbaru</option>
+            </select>
+          </div>
+        </div>
+        <form>
+            <label id="add" class="form-list" style="display: none;">
+              <input type="text" placeholder="Masukan nama tugas" name="Masukan nama tugas">
+              <input type="text" placeholder="Deskripsi Tugas (Optional)" name="Deskripsi Tugas (Optional)">              
+              <input type="date" placeholder="Tanggal & Waktu" name="Tanggal & Waktu">
+            </label>  
+          </form>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Product Design</span>
+              <span class="badge">Hari Ini</span>
+              <img src="/assets/more-vertical.png" alt="more-vertical" />
+            <div>
+          </div>
+          <button id="daily-task" class="task-desc">
+            <div>Tugas untuk design team</div> 
+          </button>
+          <div id="todo" style="display: none;">
+            <div class="sub-button"> <img src="assets/button-plus2.png" alt="button-plus2" /></div>
+            <div class="task-sub">Subtask</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box1" id="box1"></div>
+            <div id="box-text2" class="task-sub1">Design Review</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box2" id="box2"></div>
+            <div id="box-text2" class="task-sub1">Low-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box3" id="box3"></div>
+            <div id="box-text3" class="task-sub1">High-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box4" id="box4"></div>
+            <div id="box-text4" class="task-sub1">Design Guidelines</div>
+          </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Development</span>
+              <span class="badge">15 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Launching Wazwez Website</span>
+              <span class="badge">20 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="done">
+        <button id="done-task" class="btn-done">
+          <span><img src="/assets/arrd.png" alt="arrow-down" />
+          <span>Terselesaikan 3 (tugas)</span>
+        </button>  
+       <div id="list" style="display: none;">
+        <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb1" id="cb1">
+          </div>
+          <div id="cb1-text">Requirements Detail</div>
+      </label>
+      <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb2" id="cb2">
+          </div>
+          <div id="cb2-text">Backlog Teams</div>
+      </label>
+      <label class="list-item">
+        <div class="check">
+            <input type="checkbox" name="cb3" id="cb3">
+        </div>
+        <div id="cb3-text">Meeting With Teams</div>
+      </label>
+       </div>
+    </div>
+      </div>
+    </main>
+  </div>
+        <script>
+          // List tugas terselesaikan
+              const cb1 = document.getElementById('cb1')
+              const cb2 = document.getElementById('cb2')
+              const cb3 = document.getElementById('cb3')
+              const cb1Text = document.getElementById('cb1-text')
+              const cb2Text = document.getElementById('cb2-text')
+              const cb3Text = document.getElementById('cb3-text')
+              cb1.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb1Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb1Text.style.textDecorationLine = null
+                  )
+              })
+              cb2.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb2Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb2Text.style.textDecorationLine = null
+                  )
+              })
+              cb3.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb3Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb3Text.style.textDecorationLine = null
+                  )
+              })
+
+              // button tugas terselesaikan
+              const doneTaskButton = document.getElementById('done-task')
+              const list = document.getElementById('list')
+              let isListShow = false
+              doneTaskButton.addEventListener('click', ()=>{
+                  if(isListShow){
+                      isListShow = false
+                      doneTaskButton.style.color = 'black'
+                      list.style.display = 'none'
+                  }else{
+                      isListShow = true
+                      doneTaskButton.style.color = '#7A7F83'
+                      list.style.display = 'block'
+                  }
+              })
+
+              // button tambah tugas
+              const addTaskButton = document.getElementById('add-task')
+              const add = document.getElementById('add')
+              let isAddShow = false
+              addTaskButton.addEventListener('click', ()=>{
+                  if(isAddShow){
+                      isAddShow = false
+                      add.style.display = 'none'
+                  }else{
+                      isAddShow = true
+                      add.style.display = 'block'
+                  }
+              })
+              
+              // button tugas harian
+              const dailyTaskButton = document.getElementById('daily-task')
+              const todo = document.getElementById('todo')
+              let isTodoShow = false
+              dailyTaskButton.addEventListener('click', ()=>{
+                  if(isTodoShow){
+                      isTodoShow = false
+                      todo.style.display = 'none'
+                  }else{
+                      isTodoShow = true
+                      todo.style.display = 'block'
+                  }
+              })
+        </script>
+<!-- Javascript untuk Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+crossorigin="anonymous"></script>
+</body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup Website Javascript DOM</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- CSS External -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="logo">
+          <span class="left">waz</span><span class="right">wez</span><span>.</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="/assets/notification.png" alt="notification" />
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <div class="profile-picture d-inline-block">
+                <img class="rounded-circle object-fit-cover" src="/assets/profile.jpg" alt="profile" />
+              </div>
+              Krozeo Jupiter
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Home</a></li>
+              <li><a class="dropdown-item" href="#">My Task</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sort By</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="conten-wrapper">
+    <main class="content">
+      <div class="heading">
+        <div>
+          <div class="title">MY TASK</div>
+          <div class="subtitle">To Do List</div>
+          <div class="desc">Buat list tugas harian saya</div>
+        </div>
+        <div>
+          <button id="add-task" class="button-orange">
+            <img src="/assets/plus.png" alt="plus" />
+            Tambah tugas
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="option">
+          <div>Sort by</div>
+          <div>
+            <select class="input" name="By Tanggal" id="by-tanggal">
+              <option value="0" selected class="option">By Tanggal</option>
+              <option value="1" class="option">By Time</option>
+              <option value="2" class="option">Terbaru</option>
+            </select>
+          </div>
+        </div>
+        <form>
+            <label id="add" class="form-list" style="display: none;">
+              <input type="text" placeholder="Masukan nama tugas" name="Masukan nama tugas">
+              <input type="text" placeholder="Deskripsi Tugas (Optional)" name="Deskripsi Tugas (Optional)">              
+              <input type="date" placeholder="Tanggal & Waktu" name="Tanggal & Waktu">
+            </label>  
+          </form>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Product Design</span>
+              <span class="badge">Hari Ini</span>
+              <img src="/assets/more-vertical.png" alt="more-vertical" />
+            <div>
+          </div>
+          <button id="daily-task" class="task-desc">
+            <div>Tugas untuk design team</div> 
+          </button>
+          <div id="todo" style="display: none;">
+            <div class="sub-button"> <img src="assets/button-plus2.png" alt="button-plus2" /></div>
+            <div class="task-sub">Subtask</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box1" id="box1"></div>
+            <div id="box-text2" class="task-sub1">Design Review</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box2" id="box2"></div>
+            <div id="box-text2" class="task-sub1">Low-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box3" id="box3"></div>
+            <div id="box-text3" class="task-sub1">High-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box4" id="box4"></div>
+            <div id="box-text4" class="task-sub1">Design Guidelines</div>
+          </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Development</span>
+              <span class="badge">15 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Launching Wazwez Website</span>
+              <span class="badge">20 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="done">
+        <button id="done-task" class="btn-done">
+          <span><img src="/assets/arrd.png" alt="arrow-down" />
+          <span>Terselesaikan 3 (tugas)</span>
+        </button>  
+       <div id="list" style="display: none;">
+        <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb1" id="cb1">
+          </div>
+          <div id="cb1-text">Requirements Detail</div>
+      </label>
+      <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb2" id="cb2">
+          </div>
+          <div id="cb2-text">Backlog Teams</div>
+      </label>
+      <label class="list-item">
+        <div class="check">
+            <input type="checkbox" name="cb3" id="cb3">
+        </div>
+        <div id="cb3-text">Meeting With Teams</div>
+      </label>
+       </div>
+    </div>
+      </div>
+    </main>
+  </div>
+        <script>
+          // List tugas terselesaikan
+              const cb1 = document.getElementById('cb1')
+              const cb2 = document.getElementById('cb2')
+              const cb3 = document.getElementById('cb3')
+              const cb1Text = document.getElementById('cb1-text')
+              const cb2Text = document.getElementById('cb2-text')
+              const cb3Text = document.getElementById('cb3-text')
+              cb1.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb1Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb1Text.style.textDecorationLine = null
+                  )
+              })
+              cb2.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb2Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb2Text.style.textDecorationLine = null
+                  )
+              })
+              cb3.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb3Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb3Text.style.textDecorationLine = null
+                  )
+              })
+
+              // button tugas terselesaikan
+              const doneTaskButton = document.getElementById('done-task')
+              const list = document.getElementById('list')
+              let isListShow = false
+              doneTaskButton.addEventListener('click', ()=>{
+                  if(isListShow){
+                      isListShow = false
+                      doneTaskButton.style.color = 'black'
+                      list.style.display = 'none'
+                  }else{
+                      isListShow = true
+                      doneTaskButton.style.color = '#7A7F83'
+                      list.style.display = 'block'
+                  }
+              })
+
+              // button tambah tugas
+              const addTaskButton = document.getElementById('add-task')
+              const add = document.getElementById('add')
+              let isAddShow = false
+              addTaskButton.addEventListener('click', ()=>{
+                  if(isAddShow){
+                      isAddShow = false
+                      add.style.display = 'none'
+                  }else{
+                      isAddShow = true
+                      add.style.display = 'block'
+                  }
+              })
+              
+              // button tugas harian
+              const dailyTaskButton = document.getElementById('daily-task')
+              const todo = document.getElementById('todo')
+              let isTodoShow = false
+              dailyTaskButton.addEventListener('click', ()=>{
+                  if(isTodoShow){
+                      isTodoShow = false
+                      todo.style.display = 'none'
+                  }else{
+                      isTodoShow = true
+                      todo.style.display = 'block'
+                  }
+              })
+        </script>
+<!-- Javascript untuk Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+crossorigin="anonymous"></script>
+</body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup Website Javascript DOM</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- CSS External -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="logo">
+          <span class="left">waz</span><span class="right">wez</span><span>.</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="/assets/notification.png" alt="notification" />
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <div class="profile-picture d-inline-block">
+                <img class="rounded-circle object-fit-cover" src="/assets/profile.jpg" alt="profile" />
+              </div>
+              Krozeo Jupiter
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Home</a></li>
+              <li><a class="dropdown-item" href="#">My Task</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sort By</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="conten-wrapper">
+    <main class="content">
+      <div class="heading">
+        <div>
+          <div class="title">MY TASK</div>
+          <div class="subtitle">To Do List</div>
+          <div class="desc">Buat list tugas harian saya</div>
+        </div>
+        <div>
+          <button id="add-task" class="button-orange">
+            <img src="/assets/plus.png" alt="plus" />
+            Tambah tugas
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="option">
+          <div>Sort by</div>
+          <div>
+            <select class="input" name="By Tanggal" id="by-tanggal">
+              <option value="0" selected class="option">By Tanggal</option>
+              <option value="1" class="option">By Time</option>
+              <option value="2" class="option">Terbaru</option>
+            </select>
+          </div>
+        </div>
+        <form>
+            <label id="add" class="form-list" style="display: none;">
+              <input type="text" placeholder="Masukan nama tugas" name="Masukan nama tugas">
+              <input type="text" placeholder="Deskripsi Tugas (Optional)" name="Deskripsi Tugas (Optional)">              
+              <input type="date" placeholder="Tanggal & Waktu" name="Tanggal & Waktu">
+            </label>  
+          </form>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Product Design</span>
+              <span class="badge">Hari Ini</span>
+              <img src="/assets/more-vertical.png" alt="more-vertical" />
+            <div>
+          </div>
+          <button id="daily-task" class="task-desc">
+            <div>Tugas untuk design team</div> 
+          </button>
+          <div id="todo" style="display: none;">
+            <div class="sub-button"> <img src="assets/button-plus2.png" alt="button-plus2" /></div>
+            <div class="task-sub">Subtask</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box1" id="box1"></div>
+            <div id="box-text2" class="task-sub1">Design Review</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box2" id="box2"></div>
+            <div id="box-text2" class="task-sub1">Low-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box3" id="box3"></div>
+            <div id="box-text3" class="task-sub1">High-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box4" id="box4"></div>
+            <div id="box-text4" class="task-sub1">Design Guidelines</div>
+          </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Development</span>
+              <span class="badge">15 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Launching Wazwez Website</span>
+              <span class="badge">20 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="done">
+        <button id="done-task" class="btn-done">
+          <span><img src="/assets/arrd.png" alt="arrow-down" />
+          <span>Terselesaikan 3 (tugas)</span>
+        </button>  
+       <div id="list" style="display: none;">
+        <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb1" id="cb1">
+          </div>
+          <div id="cb1-text">Requirements Detail</div>
+      </label>
+      <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb2" id="cb2">
+          </div>
+          <div id="cb2-text">Backlog Teams</div>
+      </label>
+      <label class="list-item">
+        <div class="check">
+            <input type="checkbox" name="cb3" id="cb3">
+        </div>
+        <div id="cb3-text">Meeting With Teams</div>
+      </label>
+       </div>
+    </div>
+      </div>
+    </main>
+  </div>
+        <script>
+          // List tugas terselesaikan
+              const cb1 = document.getElementById('cb1')
+              const cb2 = document.getElementById('cb2')
+              const cb3 = document.getElementById('cb3')
+              const cb1Text = document.getElementById('cb1-text')
+              const cb2Text = document.getElementById('cb2-text')
+              const cb3Text = document.getElementById('cb3-text')
+              cb1.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb1Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb1Text.style.textDecorationLine = null
+                  )
+              })
+              cb2.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb2Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb2Text.style.textDecorationLine = null
+                  )
+              })
+              cb3.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb3Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb3Text.style.textDecorationLine = null
+                  )
+              })
+
+              // button tugas terselesaikan
+              const doneTaskButton = document.getElementById('done-task')
+              const list = document.getElementById('list')
+              let isListShow = false
+              doneTaskButton.addEventListener('click', ()=>{
+                  if(isListShow){
+                      isListShow = false
+                      doneTaskButton.style.color = 'black'
+                      list.style.display = 'none'
+                  }else{
+                      isListShow = true
+                      doneTaskButton.style.color = '#7A7F83'
+                      list.style.display = 'block'
+                  }
+              })
+
+              // button tambah tugas
+              const addTaskButton = document.getElementById('add-task')
+              const add = document.getElementById('add')
+              let isAddShow = false
+              addTaskButton.addEventListener('click', ()=>{
+                  if(isAddShow){
+                      isAddShow = false
+                      add.style.display = 'none'
+                  }else{
+                      isAddShow = true
+                      add.style.display = 'block'
+                  }
+              })
+              
+              // button tugas harian
+              const dailyTaskButton = document.getElementById('daily-task')
+              const todo = document.getElementById('todo')
+              let isTodoShow = false
+              dailyTaskButton.addEventListener('click', ()=>{
+                  if(isTodoShow){
+                      isTodoShow = false
+                      todo.style.display = 'none'
+                  }else{
+                      isTodoShow = true
+                      todo.style.display = 'block'
+                  }
+              })
+        </script>
+<!-- Javascript untuk Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+crossorigin="anonymous"></script>
+</body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup Website Javascript DOM</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- CSS External -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="logo">
+          <span class="left">waz</span><span class="right">wez</span><span>.</span>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link active" aria-current="page" href="#">
+              <img src="/assets/notification.png" alt="notification" />
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <div class="profile-picture d-inline-block">
+                <img class="rounded-circle object-fit-cover" src="/assets/profile.jpg" alt="profile" />
+              </div>
+              Krozeo Jupiter
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Home</a></li>
+              <li><a class="dropdown-item" href="#">My Task</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sort By</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="conten-wrapper">
+    <main class="content">
+      <div class="heading">
+        <div>
+          <div class="title">MY TASK</div>
+          <div class="subtitle">To Do List</div>
+          <div class="desc">Buat list tugas harian saya</div>
+        </div>
+        <div>
+          <button id="add-task" class="button-orange">
+            <img src="/assets/plus.png" alt="plus" />
+            Tambah tugas
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="option">
+          <div>Sort by</div>
+          <div>
+            <select class="input" name="By Tanggal" id="by-tanggal">
+              <option value="0" selected class="option">By Tanggal</option>
+              <option value="1" class="option">By Time</option>
+              <option value="2" class="option">Terbaru</option>
+            </select>
+          </div>
+        </div>
+        <form>
+            <label id="add" class="form-list" style="display: none;">
+              <input type="text" placeholder="Masukan nama tugas" name="Masukan nama tugas">
+              <input type="text" placeholder="Deskripsi Tugas (Optional)" name="Deskripsi Tugas (Optional)">              
+              <input type="date" placeholder="Tanggal & Waktu" name="Tanggal & Waktu">
+            </label>  
+          </form>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Product Design</span>
+              <span class="badge">Hari Ini</span>
+              <img src="/assets/more-vertical.png" alt="more-vertical" />
+            <div>
+          </div>
+          <button id="daily-task" class="task-desc">
+            <div>Tugas untuk design team</div> 
+          </button>
+          <div id="todo" style="display: none;">
+            <div class="sub-button"> <img src="assets/button-plus2.png" alt="button-plus2" /></div>
+            <div class="task-sub">Subtask</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box1" id="box1"></div>
+            <div id="box-text2" class="task-sub1">Design Review</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box2" id="box2"></div>
+            <div id="box-text2" class="task-sub1">Low-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box3" id="box3"></div>
+            <div id="box-text3" class="task-sub1">High-Fidelity design</div>
+            <div class="checkbox-btn1"><input type="checkbox" name="box4" id="box4"></div>
+            <div id="box-text4" class="task-sub1">Design Guidelines</div>
+          </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Development</span>
+              <span class="badge">15 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+        <div class="task">
+          <div class="check">
+            <input type="checkbox" />
+          </div>
+          <div class="main">
+            <div>
+              <span>Launching Wazwez Website</span>
+              <span class="badge">20 Juni 2022</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <img src="/assets/arrd.png" alt="arrow-down" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="done">
+        <button id="done-task" class="btn-done">
+          <span><img src="/assets/arrd.png" alt="arrow-down" />
+          <span>Terselesaikan 3 (tugas)</span>
+        </button>  
+       <div id="list" style="display: none;">
+        <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb1" id="cb1">
+          </div>
+          <div id="cb1-text">Requirements Detail</div>
+      </label>
+      <label class="list-item">
+          <div class="check">
+              <input type="checkbox" name="cb2" id="cb2">
+          </div>
+          <div id="cb2-text">Backlog Teams</div>
+      </label>
+      <label class="list-item">
+        <div class="check">
+            <input type="checkbox" name="cb3" id="cb3">
+        </div>
+        <div id="cb3-text">Meeting With Teams</div>
+      </label>
+       </div>
+    </div>
+      </div>
+    </main>
+  </div>
+        <script>
+          // List tugas terselesaikan
+              const cb1 = document.getElementById('cb1')
+              const cb2 = document.getElementById('cb2')
+              const cb3 = document.getElementById('cb3')
+              const cb1Text = document.getElementById('cb1-text')
+              const cb2Text = document.getElementById('cb2-text')
+              const cb3Text = document.getElementById('cb3-text')
+              cb1.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb1Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb1Text.style.textDecorationLine = null
+                  )
+              })
+              cb2.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb2Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb2Text.style.textDecorationLine = null
+                  )
+              })
+              cb3.addEventListener('change', (e)=>{
+                  if(e.target.checked){
+                      cb3Text.style.textDecorationLine = 'line-through'
+                  }else(
+                      cb3Text.style.textDecorationLine = null
+                  )
+              })
+
+              // button tugas terselesaikan
+              const doneTaskButton = document.getElementById('done-task')
+              const list = document.getElementById('list')
+              let isListShow = false
+              doneTaskButton.addEventListener('click', ()=>{
+                  if(isListShow){
+                      isListShow = false
+                      doneTaskButton.style.color = 'black'
+                      list.style.display = 'none'
+                  }else{
+                      isListShow = true
+                      doneTaskButton.style.color = '#7A7F83'
+                      list.style.display = 'block'
+                  }
+              })
+
+              // button tambah tugas
+              const addTaskButton = document.getElementById('add-task')
+              const add = document.getElementById('add')
+              let isAddShow = false
+              addTaskButton.addEventListener('click', ()=>{
+                  if(isAddShow){
+                      isAddShow = false
+                      add.style.display = 'none'
+                  }else{
+                      isAddShow = true
+                      add.style.display = 'block'
+                  }
+              })
+              
+              // button tugas harian
+              const dailyTaskButton = document.getElementById('daily-task')
+              const todo = document.getElementById('todo')
+              let isTodoShow = false
+              dailyTaskButton.addEventListener('click', ()=>{
+                  if(isTodoShow){
+                      isTodoShow = false
+                      todo.style.display = 'none'
+                  }else{
+                      isTodoShow = true
+                      todo.style.display = 'block'
+                  }
+              })
+        </script>
 <!-- Javascript untuk Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
